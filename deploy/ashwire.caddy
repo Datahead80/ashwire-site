@@ -1,0 +1,11 @@
+# Copy to /etc/caddy/sites/ashwire.caddy on the server.
+ashwire.ai, www.ashwire.ai {
+	root * /var/www/ashwire.ai
+	encode gzip
+
+	# The site folder is a git checkout; don't serve repo files.
+	@private path /.git /.git/* /deploy/* /README.md /DEPLOY.md
+	respond @private 404
+
+	file_server
+}

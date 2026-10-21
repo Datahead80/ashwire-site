@@ -2,7 +2,7 @@
 
 The Ashwire Labs landing page. Plain static files, no build step.
 
-Served on the game server from `/var/www/ashwire.ai` by Caddy (see `docs/deploy.md` in cyberpunk-mud, "Hosting another website on the same server").
+Served on the game server from `/var/www/ashwire.ai` by Caddy (full setup steps in `DEPLOY.md`; the Caddy site file is `deploy/ashwire.caddy`).
 
 To update the live site after changes are pushed:
 
