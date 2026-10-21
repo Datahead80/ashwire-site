@@ -8,12 +8,11 @@ Throughout this guide:
 
 ---
 
-## Part 1. Merge the Caddy change on GitHub (browser, 2 minutes)
+## Part 1. Merge the Caddy change on GitHub (done)
 
 Your MUD's setup script rewrites the Caddy config every time it runs. Pull request #431 makes it also load extra sites from `/etc/caddy/sites/`, so ashwire.ai won't get wiped on your next MUD update.
 
-1. Open https://github.com/Datahead80/cyberpunk-mud/pull/431
-2. Scroll to the bottom and click the green **Merge pull request** button, then **Confirm merge**.
+**Already done.** You merged it on Oct 21, so skip to Part 2.
 
 ---
 
