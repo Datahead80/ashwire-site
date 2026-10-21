@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ashwire Labs</title>
+<meta name="description" content="Ashwire Labs is an AI product studio building consumer apps for games, lifestyle and efficiency.">
+<meta name="theme-color" content="#14121A">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<meta property="og:title" content="Ashwire Labs">
+<meta property="og:description" content="Apps that rise from the ash, wired with AI.">
+<meta property="og:url" content="https://ashwire.ai/">
+<meta property="og:type" content="website">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one dark column, circuit-trace phoenix hero, three product lanes, a four-step build sequence, founder note, early-access signup. Deliberately single dark theme. */
+:root {
+  --ash: #14121A;
+  --ash-2: #1C1924;
+  --line: #2C2836;
+  --smoke: #8E8A9C;
+  --bone: #EDEAF5;
+  --ember: #FF5A2C;
+  --flare: #FF2E88;
+  --wire: #2DE2E6;
+  --display: "Chakra Petch", "Rajdhani", "Segoe UI", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ash); color: var(--bone); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ash); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--wire); outline-offset: 3px; }
+.mono { font-family: var(--mono); }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--smoke); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.05; margin: 0; text-wrap: balance; }
+.wm { font-family: var(--display); font-weight: 700; letter-spacing: .12em; }
+.wm span { color: var(--ember); }
+
+/* nav */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--ash) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 18px; }
+.brand svg { width: 34px; height: 34px; }
+nav { display: flex; gap: 24px; font-family: var(--mono); font-size: 14px; }
+nav a { text-decoration: none; color: var(--smoke); }
+nav a:hover { color: var(--wire); }
+@media (max-width: 640px) { nav a:not(.cta-link) { display: none; } }
+.cta-link { color: var(--bone) !important; border: 1px solid var(--ember); padding: 4px 12px; white-space: nowrap; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(60% 70% at 72% 110%, color-mix(in srgb, var(--ember) 28%, transparent), transparent 70%),
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px;
+}
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px; align-items: center; padding-block: 88px 72px; }
+.hero h1 { font-size: clamp(42px, 6.4vw, 80px); letter-spacing: -.01em; margin-block: 18px 22px; }
+.hero h1 em { font-style: normal; background: linear-gradient(90deg, var(--ember), var(--flare) 55%, var(--wire)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p.lede { font-size: 19px; color: color-mix(in srgb, var(--bone) 82%, var(--smoke)); max-width: 34em; margin: 0 0 30px; }
+.actions { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn { font-family: var(--mono); font-size: 15px; text-decoration: none; padding: 12px 20px; border: 1px solid var(--line); color: var(--bone); background: var(--ash-2); cursor: pointer; }
+.btn.primary { background: var(--ember); border-color: var(--ember); color: var(--ash); font-weight: 500; }
+.btn:hover { border-color: var(--wire); }
+.btn.primary:hover { background: var(--flare); border-color: var(--flare); }
+.status { margin-top: 34px; font-family: var(--mono); font-size: 13px; color: var(--smoke); display: flex; gap: 18px; flex-wrap: wrap; }
+.status b { color: var(--wire); font-weight: 400; }
+.mark { width: 100%; max-width: 420px; justify-self: center; aspect-ratio: 1; }
+.mark .pulse { stroke: var(--bone); stroke-width: 3; stroke-dasharray: 10 260; animation: run 3.2s linear infinite; opacity: .9; }
+.mark .pulse:nth-of-type(2) { animation-delay: .6s; }
+.mark .pulse:nth-of-type(3) { animation-delay: 1.2s; }
+@keyframes run { from { stroke-dashoffset: 270; } to { stroke-dashoffset: 0; } }
+@media (max-width: 820px) { .hero .wrap { grid-template-columns: 1fr; padding-block: 56px 48px; } .mark { max-width: 260px; order: -1; justify-self: start; } }
+
+/* sections */
+section { padding-block: 88px; border-bottom: 1px solid var(--line); }
+.sec-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 32px; align-items: end; margin-bottom: 48px; }
+.sec-head h2 { font-size: clamp(32px, 4vw, 48px); margin-top: 10px; }
+.sec-head p { margin: 0; color: var(--smoke); max-width: 36em; }
+@media (max-width: 820px) { .sec-head { grid-template-columns: 1fr; gap: 14px; } section { padding-block: 64px; } }
+
+.lanes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.lane { background: var(--ash); padding: 30px 26px 32px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.lane .tag { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; color: var(--lane); }
+.lane h3 { font-size: 30px; }
+.lane p { margin: 0; color: color-mix(in srgb, var(--bone) 78%, var(--smoke)); }
+.proj { margin-top: auto; border-top: 1px dashed var(--line); padding-top: 16px; font-family: var(--mono); font-size: 14px; display: grid; gap: 4px; }
+.proj .code { color: var(--lane); }
+.proj .state { color: var(--smoke); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+.lane.play { --lane: var(--ember); }
+.lane.live { --lane: var(--flare); }
+.lane.flow { --lane: var(--wire); }
+@media (max-width: 820px) { .lanes { grid-template-columns: 1fr; } }
+.note { margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--smoke); }
+
+/* build sequence */
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; list-style: none; margin: 0; padding: 0; counter-reset: s; position: relative; }
+.steps::before { content: ""; position: absolute; left: 0; right: 0; top: 11px; height: 2px; background: linear-gradient(90deg, var(--ember), var(--flare), var(--wire)); }
+.steps li { position: relative; padding-top: 40px; min-width: 0; }
+.steps li::before { content: ""; position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border-radius: 50%; background: var(--ash); border: 2px solid var(--bone); }
+.steps .k { font-family: var(--mono); font-size: 13px; color: var(--smoke); }
+.steps h3 { font-size: 24px; margin: 6px 0 8px; }
+.steps p { margin: 0; color: color-mix(in srgb, var(--bone) 78%, var(--smoke)); font-size: 16px; }
+@media (max-width: 820px) {
+  .steps { grid-template-columns: 1fr; gap: 28px; padding-left: 30px; }
+  .steps::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; background: linear-gradient(var(--ember), var(--flare), var(--wire)); }
+  .steps li { padding-top: 0; } .steps li::before { left: -30px; top: 6px; }
+}
+
+/* founder */
+.founder .wrap { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: start; }
+.handle { font-family: var(--mono); border: 1px solid var(--line); background: var(--ash-2); padding: 22px 24px; font-size: 14px; line-height: 1.9; min-width: 0; }
+.handle .c { color: var(--smoke); }
+.handle .v { color: var(--wire); }
+.handle .e { color: var(--ember); }
+.founder blockquote { margin: 0; font-family: var(--display); font-size: clamp(24px, 3vw, 34px); font-weight: 600; line-height: 1.25; text-wrap: balance; }
+.founder blockquote + p { color: var(--smoke); margin: 20px 0 0; max-width: 40em; }
+@media (max-width: 820px) { .founder .wrap { grid-template-columns: 1fr; gap: 28px; } }
+
+/* signup */
+.signup { border-bottom: 0; background: radial-gradient(50% 80% at 50% 120%, color-mix(in srgb, var(--flare) 22%, transparent), transparent 70%); }
+.signup .wrap { max-width: 720px; text-align: center; display: grid; justify-items: center; gap: 18px; }
+.signup h2 { font-size: clamp(32px, 4.4vw, 52px); }
+.signup p { margin: 0; color: var(--smoke); }
+form { display: flex; gap: 10px; width: 100%; max-width: 520px; margin-top: 10px; flex-wrap: wrap; }
+input[type=email] { flex: 1 1 240px; min-width: 0; font: inherit; font-family: var(--mono); font-size: 15px; padding: 12px 14px; background: var(--ash-2); color: var(--bone); border: 1px solid var(--line); }
+input[type=email]::placeholder { color: var(--smoke); }
+#msg { font-family: var(--mono); font-size: 14px; color: var(--wire); min-height: 1.4em; }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-family: var(--mono); font-size: 13px; color: var(--smoke); }
+
+@media (prefers-reduced-motion: reduce) { .mark .pulse { animation: none; display: none; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" gradientUnits="userSpaceOnUse" x1="0" y1="190" x2="0" y2="14">
+      <stop offset="0" stop-color="#FF5A2C"/><stop offset=".55" stop-color="#FF2E88"/><stop offset="1" stop-color="#2DE2E6"/>
+    </linearGradient>
+    <symbol id="phoenix" viewBox="0 0 200 200">
+      <g fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M100 178 V76"/>
+        <path d="M100 98 L64 62 H26 M100 98 L136 62 H174"/>
+        <path d="M100 114 L72 86 H40 M100 114 L128 86 H160"/>
+        <path d="M100 130 L80 110 H56 M100 130 L120 110 H144"/>
+        <path d="M100 150 L86 164 V182 M100 150 L114 164 V182"/>
+      </g>
+      <g fill="url(#g)">
+        <circle cx="20" cy="62" r="7"/><circle cx="180" cy="62" r="7"/><circle cx="34" cy="86" r="6"/><circle cx="166" cy="86" r="6"/><circle cx="50" cy="110" r="5"/><circle cx="150" cy="110" r="5"/>
+        <path d="M100 40 L113 58 L100 72 L87 58 Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand wm" href="#top"><svg aria-hidden="true"><use href="#phoenix"/></svg>ASHWIRE<span>/</span>LABS</a>
+    <nav aria-label="Main">
+      <a href="#products">Products</a>
+      <a href="#process">How we build</a>
+      <a href="#founder">Founder</a>
+      <a class="cta-link" href="#early">Early access</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">AI product studio · Florida · est. 2026</div>
+        <h1>Apps that rise from the ash, <em>wired with AI.</em></h1>
+        <p class="lede">Ashwire Labs builds consumer apps for play, daily life and getting things done. Small teams, fast loops, and AI where it actually makes the product better.</p>
+        <div class="actions">
+          <a class="btn primary" href="#early">Get early access</a>
+          <a class="btn" href="#products">See what we're building</a>
+        </div>
+        <div class="status"><span>&gt; status: <b>igniting</b></span><span>projects in the forge: <b>3</b></span><span>ashwire.ai</span></div>
+      </div>
+      <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Ashwire Labs circuit phoenix mark">
+        <use href="#phoenix"/>
+        <g fill="none" stroke-linecap="round">
+          <path class="pulse" d="M100 178 V98 L64 62 H26"/>
+          <path class="pulse" d="M100 178 V114 L128 86 H160"/>
+          <path class="pulse" d="M100 178 V98 L136 62 H174"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Three lanes</div><h2>What we make</h2></div>
+        <p>Every Ashwire product sits in one of three lanes. Each one starts from a real annoyance or a night that could have been more fun, then gets an AI core that earns its place.</p>
+      </div>
+      <div class="lanes">
+        <article class="lane play">
+          <div class="tag">01 · PLAY</div>
+          <h3>Games</h3>
+          <p>Worlds that react to you. AI game masters, characters that remember, and runs that never play out the same way twice.</p>
+          <div class="proj"><span class="code">Codename EMBER</span><span>An AI dungeon master for co-op nights with friends.</span><span class="state">In the forge</span></div>
+        </article>
+        <article class="lane live">
+          <div class="tag">02 · LIVE</div>
+          <h3>Lifestyle</h3>
+          <p>Apps for the rest of your day: meals, fitness, routines and hobbies, with an assistant that learns your patterns instead of nagging.</p>
+          <div class="proj"><span class="code">Codename KINDLE</span><span>A habit coach that adjusts when life gets messy.</span><span class="state">Sketching</span></div>
+        </article>
+        <article class="lane flow">
+          <div class="tag">03 · FLOW</div>
+          <h3>Efficiency</h3>
+          <p>Tools that take the busywork off your plate. Sort, summarize and schedule so the important stuff gets your attention.</p>
+          <div class="proj"><span class="code">Codename RELAY</span><span>Inbox triage that drafts the boring replies for you.</span><span class="state">Prototype</span></div>
+        </article>
+      </div>
+      <div class="note">// Codenames are sample placeholders for this mockup.</div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">The burn cycle</div><h2>How we build</h2></div>
+        <p>Every product goes through the same loop. Ideas that don't survive it go back to ash, and the next one starts from what we learned.</p>
+      </div>
+      <ol class="steps">
+        <li><div class="k">01</div><h3>Spark</h3><p>Find a real problem or a missing kind of fun, and test it with people before writing code.</p></li>
+        <li><div class="k">02</div><h3>Wire</h3><p>Build the smallest version with the AI doing the hard part, and cut everything else.</p></li>
+        <li><div class="k">03</div><h3>Ship</h3><p>Put it in front of real users in weeks, then watch what they actually do.</p></li>
+        <li><div class="k">04</div><h3>Rise</h3><p>Double down on what works. Burn down what doesn't, and carry the lessons forward.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="founder" class="founder">
+    <div class="wrap">
+      <div class="handle" aria-label="Founder profile">
+        <div><span class="c">user</span>   <span class="v">datahead</span></div>
+        <div><span class="c">role</span>   founder</div>
+        <div><span class="c">mark</span>   <span class="e">phoenix</span></div>
+        <div><span class="c">focus</span>  games · life · flow</div>
+        <div><span class="c">uptime</span> since 2026</div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:16px">From the founder</div>
+        <blockquote>"The phoenix is on my arm for a reason. You build, you burn it down when it's wrong, and you come back better. That's how this studio works."</blockquote>
+        <p>Ashwire Labs was started by Stephen, known online as Datahead, to turn a running list of app ideas into real products people use every day.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="early" class="signup">
+    <div class="wrap">
+      <div class="eyebrow">Early access</div>
+      <h2>Be first through the fire</h2>
+      <p>Get invites to test new Ashwire apps before they launch. One email when something ships, nothing else.</p>
+      <form id="f" novalidate>
+        <label for="email" class="eyebrow" style="position:absolute;left:-9999px">Email address</label>
+        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+        <button class="btn primary" type="submit">Join the list</button>
+      </form>
+      <div id="msg" role="status"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="wm" style="color:var(--bone)">ASHWIRE<span>/</span>LABS</span>
+    <span>ashwire.ai · © 2026 Ashwire Labs</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var v = document.getElementById('email').value.trim();
+  var msg = document.getElementById('msg');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = 'Enter a full email address, like you@example.com.'; return; }
+  msg.textContent = 'Preview only: signups are not saved in this mockup.';
+});
+</script>
+</body>
+</html>
