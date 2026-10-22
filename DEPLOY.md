@@ -1,135 +1,102 @@
-# Put ashwire.ai live on your server, step by step
+# Move ashwire.ai to GitHub Pages, step by step
 
-You'll do four parts. The first two happen in your web browser, the rest in Terminal. It takes about 20 minutes, plus waiting for DNS.
+After this, GitHub hosts the site for free and your MUD server has nothing to do with it. Every push to this repo goes live on its own in about a minute.
 
-Throughout this guide:
-- A grey box is something to copy and paste exactly, then press **Enter**.
-- "Mac Terminal" means Terminal on your own computer. "Server" means after you've logged in with `ssh`. The prompt tells you which: on the server it ends in `root@...:~#`.
+Do the parts in order. Parts 1 to 3 are in GitHub, Part 4 is in GoDaddy, and Part 5 is one last cleanup on your server. Allow about 20 minutes, plus up to an hour of waiting for DNS and the HTTPS certificate.
 
----
-
-## Part 1. Merge the Caddy change on GitHub (done)
-
-Your MUD's setup script rewrites the Caddy config every time it runs. Pull request #431 makes it also load extra sites from `/etc/caddy/sites/`, so ashwire.ai won't get wiped on your next MUD update.
-
-**Already done.** You merged it on Oct 21, so skip to Part 2.
+The site may show a certificate warning for a few minutes after Part 4, while GitHub gets its certificate. That's normal.
 
 ---
 
-## Part 2. Point ashwire.ai at your server in GoDaddy (browser, 5 minutes)
+## Part 1. Turn on GitHub Pages (2 minutes)
 
-1. Go to https://dcc.godaddy.com/control/portfolio and sign in.
-2. Click **ashwire.ai**, then the **DNS** tab (it may say **Manage DNS**).
-3. In the list of records, look for any row with **Type = A** and **Name = @**.
-   - If its value is already `5.161.220.19`, leave it.
-   - If its value is anything else (GoDaddy's default is a "Parked" address), click the pencil icon, change **Value** to `5.161.220.19`, and **Save**.
-   - If there's no such row, click **Add New Record**, choose **Type: A**, **Name: @**, **Value: 5.161.220.19**, **TTL: 1 Hour**, and **Save**.
-4. Now look for a row with **Name = www**.
-   - If it's a **CNAME** pointing at `@` or `ashwire.ai`, that's fine. Leave it.
-   - If it's an **A** record, make its value `5.161.220.19`.
-   - If there's no `www` row, add one: **Type: A**, **Name: www**, **Value: 5.161.220.19**, **TTL: 1 Hour**, **Save**.
-5. Delete any **AAAA** rows for `@` or `www` if GoDaddy added them. They'd send some visitors to the wrong place.
-
-DNS can take a few minutes to an hour to update. You'll check it in Part 4.
+1. Open https://github.com/Datahead80/ashwire-site/settings/pages
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**. There's no Save button; it saves as soon as you pick it.
+3. Open https://github.com/Datahead80/ashwire-site/actions/workflows/pages.yml
+4. Click **Run workflow** on the right, then the green **Run workflow** button.
+5. Wait for the run to show a green check (about a minute). Refresh the page if it doesn't update.
 
 ---
 
-## Part 3. Install the site on the server (Mac Terminal, then server, 5 minutes)
+## Part 2. Verify you own ashwire.ai (5 minutes, recommended)
 
-The site lives in its own GitHub repo, https://github.com/Datahead80/ashwire-site, separate from the MUD. The server downloads it straight from GitHub, so you don't copy any files yourself.
+This stops anyone else from ever attaching ashwire.ai to their own GitHub Pages site.
 
-1. Open **Terminal** on your Mac (press **Cmd + Space**, type `Terminal`, press **Enter**).
-
-2. Log in to the server:
-
-   ```
-   ssh root@5.161.220.19
-   ```
-
-3. Update the MUD to the merged code. This adds the `/etc/caddy/sites` line to Caddy. The game is down for about a minute while it restarts.
-
-   ```
-   bash setup.sh
-   ```
-
-   Wait until it finishes and you get your prompt back.
-
-4. Check that Caddy now loads the sites folder. You should see `import /etc/caddy/sites/*.caddy`:
-
-   ```
-   grep sites /etc/caddy/Caddyfile
-   ```
-
-   If nothing prints, stop here and tell me, because Part 1's merge didn't reach the server.
-
-5. Download the site into `/var/www/ashwire.ai`:
-
-   ```
-   mkdir -p /var/www
-   git clone https://github.com/Datahead80/ashwire-site.git /var/www/ashwire.ai
-   ls /var/www/ashwire.ai
-   ```
-
-   The last line should list `index.html`, `favicon.svg`, `assets`, `brand`, `deploy` and `README.md`.
-
-6. Install the Caddy site file. It comes in the repo, so you just copy it:
-
-   ```
-   cp /var/www/ashwire.ai/deploy/ashwire.caddy /etc/caddy/sites/ashwire.caddy
-   ```
-
-7. Check the config, then load it:
-
-   ```
-   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
-   ```
-
-   It should end with `Valid configuration`. If it shows an error instead, copy it to me and don't run the next line.
-
-   ```
-   systemctl reload caddy
-   ```
-
-   No output means it worked.
-
-8. Log out:
-
-   ```
-   exit
-   ```
+1. Open https://github.com/settings/pages (your account settings, not the repo).
+2. Click **Add a domain**, type `ashwire.ai`, and click **Add domain**.
+3. GitHub shows a **TXT record** with a name like `_github-pages-challenge-Datahead80` and a long value. Keep this tab open.
+4. In a new tab, open GoDaddy's DNS page for ashwire.ai (https://dcc.godaddy.com/control/portfolio, click **ashwire.ai**, then **DNS**).
+5. Click **Add New Record** and fill in:
+   - **Type:** TXT
+   - **Name:** the name GitHub shows, *without* the `.ashwire.ai` on the end (for example `_github-pages-challenge-Datahead80`)
+   - **Value:** the long value GitHub shows
+   - **TTL:** 1 Hour
+6. Click **Save**, go back to the GitHub tab, and click **Verify**. If it says it can't find the record yet, wait 10 minutes and click **Verify** again.
 
 ---
 
-## Part 4. Check it's live (Mac Terminal, then browser)
+## Part 3. Tell GitHub the site's domain (1 minute)
 
-1. In Mac Terminal, check DNS:
+1. Go back to https://github.com/Datahead80/ashwire-site/settings/pages
+2. Under **Custom domain**, type `ashwire.ai` and click **Save**.
+3. It will show a DNS warning. That's expected until Part 4 is done.
 
-   ```
-   dig +short ashwire.ai
-   dig +short www.ashwire.ai
-   ```
+---
 
-   Both should print `5.161.220.19` (www may print `ashwire.ai.` first, then the IP). If not, wait 15 minutes and try again.
+## Part 4. Point ashwire.ai at GitHub in GoDaddy (5 minutes)
 
-2. Once DNS shows the right IP, open https://ashwire.ai in your browser. The first visit can take up to a minute while Caddy gets the HTTPS certificate. Then try https://www.ashwire.ai too.
+On the GoDaddy DNS page for ashwire.ai:
 
-3. Also check the game still works at https://mud.scpulley.com.
+1. Find the **A** record with **Name @** and value `5.161.220.19`. Click its pencil icon, change **Value** to `185.199.108.153`, and **Save**.
+2. Add three more A records. For each one, click **Add New Record**, choose **Type: A**, **Name: @**, **TTL: 1 Hour**, and **Save**. Use these values:
+   - `185.199.109.153`
+   - `185.199.110.153`
+   - `185.199.111.153`
+3. Find the **www** record (a CNAME pointing at `ashwire.ai` or `@`). Click its pencil icon, change **Value** to `datahead80.github.io`, and **Save**.
+4. Check there are no **AAAA** records for `@` or `www`. If there are, delete them.
 
-**If ashwire.ai shows a certificate error or won't load** after DNS is right, log in to the server and run this, then send me the output:
+When you're done, the records for the site should be exactly:
+
+| Type | Name | Value |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | datahead80.github.io |
+
+Then wait. Within about an hour:
+
+1. Open https://github.com/Datahead80/ashwire-site/settings/pages again. It should say **DNS check successful**.
+2. Tick **Enforce HTTPS**. If the box is greyed out, GitHub is still getting the certificate. Check back in 15 minutes.
+3. Open https://ashwire.ai and https://www.ashwire.ai. Both should show the site.
+
+---
+
+## Part 5. Remove the site from your server (2 minutes)
+
+Only do this after https://ashwire.ai loads from GitHub (Part 4 finished). In your SSH app, paste these one at a time:
 
 ```
-journalctl -u caddy --since "15 min ago" --no-pager | tail -30
+ssh root@5.161.220.19
 ```
+```
+rm /etc/caddy/sites/ashwire.caddy
+```
+```
+systemctl reload caddy
+```
+```
+rm -rf /var/www/ashwire.ai
+```
+```
+exit
+```
+
+The empty `/etc/caddy/sites/` folder stays. It's harmless, and you can use it for another site later. The MUD keeps updating with `bash setup.sh` as always.
 
 ---
 
 ## Updating the site later
 
-When I tell you I've pushed a change to ashwire-site, run these two commands from your Mac:
-
-```
-ssh root@5.161.220.19
-git -C /var/www/ashwire.ai pull
-```
-
-The new version is live right away, with no Caddy reload. (If I tell you the change touched `deploy/ashwire.caddy`, also repeat steps 6 and 7 of Part 3.)
+Nothing to do on your end. Changes pushed to `main` go live on their own within about a minute. You can watch each update at https://github.com/Datahead80/ashwire-site/actions

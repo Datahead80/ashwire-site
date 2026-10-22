@@ -1,12 +1,5 @@
 # ashwire.ai
 
-The Ashwire Labs landing page. Plain static files, no build step.
+The Ashwire Labs landing page. Plain static files in `site/`, no build step.
 
-Served on the game server from `/var/www/ashwire.ai` by Caddy (full setup steps in `DEPLOY.md`; the Caddy site file is `deploy/ashwire.caddy`).
-
-To update the live site after changes are pushed:
-
-```
-ssh root@5.161.220.19
-git -C /var/www/ashwire.ai pull
-```
+Hosted on GitHub Pages. Every push to `main` publishes `site/` to https://ashwire.ai through `.github/workflows/pages.yml`, usually within a minute. Setup steps are in `DEPLOY.md`.
