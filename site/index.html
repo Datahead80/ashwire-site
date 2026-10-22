@@ -134,6 +134,8 @@ input[type=email]::placeholder { color: var(--smoke); }
 #msg { font-family: var(--mono); font-size: 14px; color: var(--wire); min-height: 1.4em; }
 
 footer { border-top: 1px solid var(--line); }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--wire); }
 footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-family: var(--mono); font-size: 13px; color: var(--smoke); }
 
 @media (prefers-reduced-motion: reduce) { .mark .pulse { animation: none; display: none; } }
@@ -221,10 +223,10 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
           <div class="tag">03 · FLOW</div>
           <h3>Efficiency</h3>
           <p>Tools that take the busywork off your plate. Sort, summarize and schedule so the important stuff gets your attention.</p>
-          <div class="proj"><span class="code">Codename RELAY</span><span>Inbox triage that drafts the boring replies for you.</span><span class="state">Prototype</span></div>
+          <div class="proj"><span class="code"><a href="/cinderbox/">CINDERBOX</a></span><span>Your context locker: your facts locked on your phone, an AI agent you own, and prompts that fill themselves in.</span><span class="state">Coming soon · Android first</span></div>
         </article>
       </div>
-      <div class="note">// Codenames are sample placeholders for this mockup.</div>
+      <div class="note">// EMBER and KINDLE are sample codenames. Cinderbox is real: <a href="/cinderbox/">see the product page</a>.</div>
     </div>
   </section>
 
@@ -278,6 +280,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
 <footer>
   <div class="wrap">
     <span class="wm" style="color:var(--bone)">ASHWIRE<span>/</span>LABS</span>
+    <span>Contact: <a href="mailto:datahead@ashwire.ai">datahead@ashwire.ai</a></span>
     <span>ashwire.ai · © 2026 Ashwire Labs</span>
   </div>
 </footer>
