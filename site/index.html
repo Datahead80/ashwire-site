@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one dark column, circuit-trace phoenix hero, three product lanes, a four-step build sequence, founder note, early-access signup. Deliberately single dark theme. */
+/* Layout: one dark column, circuit-trace phoenix hero, core values and the mission test, the current product, a four-step build sequence, founder note, early-access signup. Deliberately single dark theme. */
 :root {
   --ash: #14121A;
   --ash-2: #1C1924;
@@ -97,6 +97,19 @@ section { padding-block: 88px; border-bottom: 1px solid var(--line); }
 .lane.live { --lane: var(--flare); }
 .lane.flow { --lane: var(--wire); }
 @media (max-width: 820px) { .lanes { grid-template-columns: 1fr; } }
+.lanes.solo { grid-template-columns: 1fr; }
+
+/* values */
+.values { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); list-style: none; margin: 0; padding: 0; }
+.values li { background: var(--ash); padding: 26px 24px 28px; min-width: 0; }
+.values .k { font-family: var(--mono); font-size: 13px; letter-spacing: .12em; color: var(--ember); }
+.values h3 { font-size: 24px; margin: 8px 0 10px; }
+.values p { margin: 0; color: color-mix(in srgb, var(--bone) 78%, var(--smoke)); font-size: 16px; }
+@media (max-width: 1000px) { .values { grid-template-columns: 1fr; } }
+.test { margin-top: 40px; border: 1px solid var(--ember); padding: 26px 26px 28px; }
+.test h3 { font-size: 26px; margin: 8px 0 14px; }
+.test ol { margin: 0; padding-left: 22px; display: grid; gap: 6px; color: color-mix(in srgb, var(--bone) 85%, var(--smoke)); }
+.test p { margin: 16px 0 0; color: var(--smoke); }
 .note { margin-top: 16px; font-family: var(--mono); font-size: 12px; color: var(--smoke); }
 
 /* build sequence */
@@ -168,6 +181,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   <div class="wrap">
     <a class="brand wm" href="#top"><svg aria-hidden="true"><use href="#phoenix"/></svg>ASHWIRE<span>/</span>LABS</a>
     <nav aria-label="Main">
+      <a href="#values">Values</a>
       <a href="#products">Products</a>
       <a href="#process">How we build</a>
       <a href="#founder">Founder</a>
@@ -180,14 +194,14 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   <div class="hero">
     <div class="wrap">
       <div>
-        <div class="eyebrow">AI product studio · Florida · est. 2026</div>
-        <h1>Apps that rise from the ash, <em>wired with AI.</em></h1>
-        <p class="lede">Ashwire Labs builds consumer apps for play, daily life and getting things done. Small teams, fast loops, and AI where it actually makes the product better.</p>
+        <div class="eyebrow">Human-first AI apps · Florida · est. 2026</div>
+        <h1>AI that gives you time back, <em>and leaves you, you.</em></h1>
+        <p class="lede">Ashwire Labs builds consumer apps that put the human first in a fast-growing AI world. Low-cost, efficient AI that does what it says, saves you real time, and keeps your data yours.</p>
         <div class="actions">
           <a class="btn primary" href="#early">Get early access</a>
-          <a class="btn" href="#products">See what we're building</a>
+          <a class="btn" href="#values">What we stand for</a>
         </div>
-        <div class="status"><span>&gt; status: <b>igniting</b></span><span>projects in the forge: <b>3</b></span><span>ashwire.ai</span></div>
+        <div class="status"><span>&gt; status: <b>igniting</b></span><span>in the forge: <b>Cinderbox</b></span><span>ashwire.ai</span></div>
       </div>
       <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Ashwire Labs circuit phoenix mark">
         <use href="#phoenix"/>
@@ -200,33 +214,48 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
     </div>
   </div>
 
+  <section id="values">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">Core values</div><h2>What we stand for</h2></div>
+        <p>AI should make life easier without costing people their privacy, their money or what makes them who they are. These five principles shape every product we build and every action our agents take.</p>
+      </div>
+      <ol class="values">
+        <li><div class="k">01</div><h3>Human first</h3><p>The app works for you, not the other way round. AI suggests; you decide. Nothing important happens without your say.</p></li>
+        <li><div class="k">02</div><h3>Your data stays yours</h3><p>Private by default. On your device wherever we can, never sold, and never shared without your clear approval.</p></li>
+        <li><div class="k">03</div><h3>Does what it says</h3><p>No hype. If we advertise a feature, it works, and we tell you plainly what the AI can't do.</p></li>
+        <li><div class="k">04</div><h3>Lean by design</h3><p>Small, efficient models and fair prices. We use AI only where it earns its place, so it costs you less.</p></li>
+        <li><div class="k">05</div><h3>Time back, not attention taken</h3><p>We measure success by the time we give you back, not the time you spend in our apps. No engagement traps.</p></li>
+      </ol>
+      <div class="test">
+        <div class="eyebrow">The mission test</div>
+        <h3>Does it stay true to the mission?</h3>
+        <ol>
+          <li>Does it put the person first and leave them in control?</li>
+          <li>Does it protect their data?</li>
+          <li>Does it do exactly what we say it does?</li>
+          <li>Is it the leanest way to get the job done?</li>
+          <li>Does it give people time back?</li>
+        </ol>
+        <p>Every feature, release and agent action has to pass all five. If it doesn't, we don't ship it.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="products">
     <div class="wrap">
       <div class="sec-head">
-        <div><div class="eyebrow">Three lanes</div><h2>What we make</h2></div>
-        <p>Every Ashwire product sits in one of three lanes. Each one starts from a real annoyance or a night that could have been more fun, then gets an AI core that earns its place.</p>
+        <div><div class="eyebrow">Now building</div><h2>What we make</h2></div>
+        <p>We focus on one product at a time and build it to pass the mission test before anything else starts.</p>
       </div>
-      <div class="lanes">
-        <article class="lane play">
-          <div class="tag">01 · PLAY</div>
-          <h3>Games</h3>
-          <p>Worlds that react to you. AI game masters, characters that remember, and runs that never play out the same way twice.</p>
-          <div class="proj"><span class="code">Codename EMBER</span><span>An AI dungeon master for co-op nights with friends.</span><span class="state">In the forge</span></div>
-        </article>
-        <article class="lane live">
-          <div class="tag">02 · LIVE</div>
-          <h3>Lifestyle</h3>
-          <p>Apps for the rest of your day: meals, fitness, routines and hobbies, with an assistant that learns your patterns instead of nagging.</p>
-          <div class="proj"><span class="code">Codename KINDLE</span><span>A habit coach that adjusts when life gets messy.</span><span class="state">Sketching</span></div>
-        </article>
+      <div class="lanes solo">
         <article class="lane flow">
-          <div class="tag">03 · FLOW</div>
-          <h3>Efficiency</h3>
-          <p>Tools that take the busywork off your plate. Sort, summarize and schedule so the important stuff gets your attention.</p>
-          <div class="proj"><span class="code"><a href="/cinderbox/">CINDERBOX</a></span><span>Your context locker: your facts locked on your phone, an AI agent you own, and prompts that fill themselves in.</span><span class="state">Coming soon · Android first</span></div>
+          <div class="tag">FLAGSHIP · PRIVATE AI</div>
+          <h3>Cinderbox</h3>
+          <p>A private place for life's important info, with an AI agent you own. Your facts stay locked on your phone, you choose what leaves, and the agent runs on a small local model.</p>
+          <div class="proj"><span class="code"><a href="/cinderbox/">CINDERBOX</a></span><span>Your context locker.</span><span class="state">Coming soon · Android first</span></div>
         </article>
       </div>
-      <div class="note">// EMBER and KINDLE are sample codenames. Cinderbox is real: <a href="/cinderbox/">see the product page</a>.</div>
     </div>
   </section>
 
@@ -251,13 +280,13 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
         <div><span class="c">user</span>   <span class="v">datahead</span></div>
         <div><span class="c">role</span>   founder</div>
         <div><span class="c">mark</span>   <span class="e">phoenix</span></div>
-        <div><span class="c">focus</span>  games · life · flow</div>
+        <div><span class="c">focus</span>  human-first AI</div>
         <div><span class="c">uptime</span> since 2026</div>
       </div>
       <div>
         <div class="eyebrow" style="margin-bottom:16px">From the founder</div>
         <blockquote>"The phoenix is on my arm for a reason. You build, you burn it down when it's wrong, and you come back better. That's how this studio works."</blockquote>
-        <p>Ashwire Labs was started by Stephen, known online as Datahead, to turn a running list of app ideas into real products people use every day.</p>
+        <p>Ashwire Labs was started by Stephen, known online as Datahead, to build AI apps that save people time without asking them to give up their privacy or themselves.</p>
       </div>
     </div>
   </section>
@@ -266,7 +295,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
     <div class="wrap">
       <div class="eyebrow">Early access</div>
       <h2>Be first through the fire</h2>
-      <p>Get invites to test new Ashwire apps before they launch. One email when something ships, nothing else.</p>
+      <p>Get an invite to test Cinderbox and future Ashwire apps before they launch. One email when something ships, nothing else.</p>
       <form id="f" novalidate>
         <label for="email" class="eyebrow" style="position:absolute;left:-9999px">Email address</label>
         <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
