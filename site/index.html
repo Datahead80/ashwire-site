@@ -138,7 +138,7 @@ section { padding-block: 88px; border-bottom: 1px solid var(--line); }
 form { display: flex; gap: 10px; width: 100%; max-width: 520px; margin-top: 10px; flex-wrap: wrap; }
 input[type=email] { flex: 1 1 240px; min-width: 0; font: inherit; font-family: var(--mono); font-size: 15px; padding: 12px 14px; background: var(--ash-2); color: var(--bone); border: 1px solid var(--line); }
 input[type=email]::placeholder { color: var(--smoke); }
-#msg { font-family: var(--mono); font-size: 14px; color: var(--wire); min-height: 1.4em; }
+.signup .soon { font-family: var(--mono); font-size: 14px; color: var(--wire); }
 
 footer { border-top: 1px solid var(--line); }
 footer a { text-decoration: none; }
@@ -284,12 +284,7 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
       <div class="eyebrow">Early access</div>
       <h2>Get early access</h2>
       <p>Get an invite to test Cinderbox and future Ashwire apps before they launch. One email when something ships, nothing else.</p>
-      <form id="f" novalidate>
-        <label for="email" class="eyebrow" style="position:absolute;left:-9999px">Email address</label>
-        <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-        <button class="btn primary" type="submit">Join the list</button>
-      </form>
-      <div id="msg" role="status"></div>
+      <p class="soon">Sign-ups are coming soon.</p>
     </div>
   </section>
 </main>
@@ -302,14 +297,5 @@ footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; g
   </div>
 </footer>
 
-<script>
-document.getElementById('f').addEventListener('submit', function (e) {
-  e.preventDefault();
-  var v = document.getElementById('email').value.trim();
-  var msg = document.getElementById('msg');
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = 'Enter a full email address, like you@example.com.'; return; }
-  msg.textContent = 'Preview only: signups are not saved in this mockup.';
-});
-</script>
 </body>
 </html>
