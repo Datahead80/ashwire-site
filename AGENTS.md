@@ -52,3 +52,6 @@ Open the page in a browser at phone and desktop width before committing. Click e
 
 ## Done means
 Page checked in a browser at both widths, links work, copy rules above hold, `site/` and the project copy match.
+
+## Keeping this file current
+When you learn something a future agent would otherwise get wrong (a command that changed, a mistake made twice, a rule Stephen set), add one line here in the same PR as the work. Remove lines that are no longer true. Keep the file under about 150 lines.
