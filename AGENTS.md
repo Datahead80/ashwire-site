@@ -35,7 +35,7 @@ Deploy: every push to `main` publishes `site/` to GitHub Pages through `.github/
 - Every claim must be true today. Say what exists, not what is planned.
 
 ## Brand
-Ground `#14121A`, ember `#FF5A2C`, flare `#FF2E88`, wire `#2DE2E6`, smoke `#8E8A9C`. Fonts: Chakra Petch (display), IBM Plex Sans (body), IBM Plex Mono (labels).
+Ground `#14121A`, ember `#FF5A2C`, flare `#FF2E88`, wire `#2DE2E6`, smoke `#8E8A9C`. Fonts: Chakra Petch (display), IBM Plex Sans (body), IBM Plex Mono (labels). Loaded from Google Fonts; that is the only outside request the pages make.
 
 ## Testing
 Open the page in a browser at phone and desktop width before committing. Click every link. Check the SVG renders. There is no automated suite.
@@ -47,7 +47,7 @@ Open the page in a browser at phone and desktop width before committing. Click e
 
 ## Boundaries
 **Always**: keep the site dependency-free and static.
-**Ask first**: new pages, forms, analytics, third-party scripts or fonts hosted elsewhere, any copy that mentions a product that is not shipped.
+**Ask first**: new pages, forms, analytics, third-party scripts, any new outside request, any copy that mentions a product that is not shipped.
 **Never**: add a sign-up form or email capture (there is no outside service yet; sign-ups stay "coming soon"); add tracking or ads; commit keys, personal data or anything about the MUD server.
 
 ## Done means
