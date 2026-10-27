@@ -33,7 +33,7 @@ Deploy: every push to `main` publishes `site/` to GitHub Pages through `.github/
 - Never use Stephen's real name. Credit only "Datahead". No founder quote, no profile box.
 - Mission first, plain and human. Avoid forced phoenix, fire or forge wording and robotic phrasing; the phoenix is the logo and how Ashwire builds, not a story.
 - Ashwire builds many kinds of apps. Cinderbox is first, not the only one, and the site is not privacy-only.
-- Never say "only app", "firewall", "hardware-locked" or "anonymous" about Cinderbox until each is true (Stephen, 2026-10-27).
+- Never say "only app", "firewall", "hardware-locked" or "anonymous" about Cinderbox until each is true (set 2026-10-27).
 - Approved headline: "Use whatever AI you like. You decide what it gets to know about you." Reuse that voice.
 - Every claim must be true today. Say what exists, not what is planned.
 

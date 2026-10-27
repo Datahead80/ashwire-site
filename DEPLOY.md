@@ -1,6 +1,6 @@
 # Move ashwire.ai to GitHub Pages, step by step
 
-After this, GitHub hosts the site for free and your MUD server has nothing to do with it. Every push to this repo goes live on its own in about a minute.
+After this, GitHub hosts the site for free and your old server has nothing to do with it. Every push to this repo goes live on its own in about a minute.
 
 Do the parts in order. Parts 1 to 3 are in GitHub, Part 4 is in GoDaddy, and Part 5 is one last cleanup on your server. Allow about 20 minutes, plus up to an hour of waiting for DNS and the HTTPS certificate.
 
@@ -90,7 +90,7 @@ rm -rf /var/www/ashwire.ai
 exit
 ```
 
-The empty `/etc/caddy/sites/` folder stays. It's harmless, and you can use it for another site later. The MUD keeps updating with `bash setup.sh` as always.
+The empty `/etc/caddy/sites/` folder stays. It's harmless, and you can use it for another site later.
 
 ---
 
