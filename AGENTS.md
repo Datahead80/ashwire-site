@@ -13,6 +13,7 @@ Deploy: every push to `main` publishes `site/` to GitHub Pages through `.github/
 | --- | --- |
 | `site/index.html` | Landing page: mission, values, Cinderbox "first up" |
 | `site/cinderbox/index.html` | Cinderbox product page |
+| `site/cinderbox/privacy/`, `site/cinderbox/trust/`, `site/cinderbox/legal.css` | Privacy policy and trust page. The Cinderbox app links to these exact URLs (`src/links.js`), so never move them. Each claim must match what the app does today |
 | `site/assets/`, `site/brand/`, `site/favicon.svg` | Circuit phoenix mark |
 | `DEPLOY.md` | One-time Pages and DNS setup |
 
@@ -25,12 +26,14 @@ Deploy: every push to `main` publishes `site/` to GitHub Pages through `.github/
 - Build DOM with `textContent`, never `innerHTML` with data.
 - Every image has alt text; text meets contrast on the dark ground; the page works at phone width without horizontal scroll.
 - No filler comments, no AI watermarks or model names in markup or commits.
+- Never put the server address or login commands in the repo; the repo is public.
 - Keep the project copy at `ashwire/ashwire.ai/index.html` in step when `site/index.html` changes.
 
 ## Copy
 - Never use Stephen's real name. Credit only "Datahead". No founder quote, no profile box.
 - Mission first, plain and human. Avoid forced phoenix, fire or forge wording and robotic phrasing; the phoenix is the logo and how Ashwire builds, not a story.
 - Ashwire builds many kinds of apps. Cinderbox is first, not the only one, and the site is not privacy-only.
+- Never say "only app", "firewall", "hardware-locked" or "anonymous" about Cinderbox until each is true (set 2026-10-27).
 - Approved headline: "Use whatever AI you like. You decide what it gets to know about you." Reuse that voice.
 - Every claim must be true today. Say what exists, not what is planned.
 

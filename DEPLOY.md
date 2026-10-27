@@ -1,6 +1,6 @@
 # Move ashwire.ai to GitHub Pages, step by step
 
-After this, GitHub hosts the site for free and your MUD server has nothing to do with it. Every push to this repo goes live on its own in about a minute.
+After this, GitHub hosts the site for free and your old server has nothing to do with it. Every push to this repo goes live on its own in about a minute.
 
 Do the parts in order. Parts 1 to 3 are in GitHub, Part 4 is in GoDaddy, and Part 5 is one last cleanup on your server. Allow about 20 minutes, plus up to an hour of waiting for DNS and the HTTPS certificate.
 
@@ -47,7 +47,7 @@ This stops anyone else from ever attaching ashwire.ai to their own GitHub Pages 
 
 On the GoDaddy DNS page for ashwire.ai:
 
-1. Find the **A** record with **Name @** and value `5.161.220.19`. Click its pencil icon, change **Value** to `185.199.108.153`, and **Save**.
+1. Find the existing **A** record with **Name @** (it points at your old server). Click its pencil icon, change **Value** to `185.199.108.153`, and **Save**.
 2. Add three more A records. For each one, click **Add New Record**, choose **Type: A**, **Name: @**, **TTL: 1 Hour**, and **Save**. Use these values:
    - `185.199.109.153`
    - `185.199.110.153`
@@ -75,11 +75,8 @@ Then wait. Within about an hour:
 
 ## Part 5. Remove the site from your server (2 minutes)
 
-Only do this after https://ashwire.ai loads from GitHub (Part 4 finished). In your SSH app, paste these one at a time:
+Only do this after https://ashwire.ai loads from GitHub (Part 4 finished). Open your server in your SSH app as you normally do, then paste these one at a time:
 
-```
-ssh root@5.161.220.19
-```
 ```
 rm /etc/caddy/sites/ashwire.caddy
 ```
@@ -93,7 +90,7 @@ rm -rf /var/www/ashwire.ai
 exit
 ```
 
-The empty `/etc/caddy/sites/` folder stays. It's harmless, and you can use it for another site later. The MUD keeps updating with `bash setup.sh` as always.
+The empty `/etc/caddy/sites/` folder stays. It's harmless, and you can use it for another site later.
 
 ---
 
