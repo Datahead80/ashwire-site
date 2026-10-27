@@ -1,0 +1,56 @@
+/* Shared by the Cinderbox privacy and trust pages. Same tokens as the Cinderbox page. */
+:root {
+  --ash: #14121A;
+  --ash-2: #1C1924;
+  --line: #2C2836;
+  --smoke: #8E8A9C;
+  --bone: #EDEAF5;
+  --ember: #FF5A2C;
+  --flare: #FF2E88;
+  --wire: #2DE2E6;
+  --display: "Chakra Petch", "Rajdhani", "Segoe UI", sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--ash); color: var(--bone); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--ash); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--wire); outline-offset: 3px; }
+.mono { font-family: var(--mono); }
+.eyebrow { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--smoke); }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.05; margin: 0; text-wrap: balance; }
+.wm { font-family: var(--display); font-weight: 700; letter-spacing: .12em; }
+.wm span { color: var(--ember); }
+
+/* nav */
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--ash) 88%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-size: 18px; }
+.brand svg { width: 34px; height: 34px; }
+nav { display: flex; gap: 24px; font-family: var(--mono); font-size: 14px; }
+nav a { text-decoration: none; color: var(--smoke); }
+nav a:hover { color: var(--wire); }
+@media (max-width: 640px) { nav { display: none; } }
+
+/* reading column */
+.doc { max-width: 760px; padding-block: 64px 80px; }
+.doc h1 { font-size: clamp(36px, 6vw, 56px); margin-block: 14px 10px; }
+.doc .lead { font-family: var(--display); font-weight: 600; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.25; margin: 0 0 8px; color: var(--wire); }
+.doc .updated { font-family: var(--mono); font-size: 13px; color: var(--smoke); margin: 0 0 40px; }
+.doc h2 { font-size: 26px; margin-block: 44px 12px; }
+.doc p, .doc li { color: color-mix(in srgb, var(--bone) 86%, var(--smoke)); }
+.doc p { margin: 0 0 14px; }
+.doc ul { padding-left: 22px; margin: 0 0 14px; }
+.doc li { margin-bottom: 6px; }
+.doc a { color: var(--wire); }
+.callout { border: 1px solid var(--line); border-left: 3px solid var(--ember); background: var(--ash-2); padding: 18px 22px; margin-block: 0 8px; }
+.callout p:last-child { margin: 0; }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-block: 28px calc(28px + env(safe-area-inset-bottom, 0px)); font-family: var(--mono); font-size: 13px; color: var(--smoke); }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--wire); }
+

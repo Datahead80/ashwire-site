@@ -47,7 +47,7 @@ This stops anyone else from ever attaching ashwire.ai to their own GitHub Pages 
 
 On the GoDaddy DNS page for ashwire.ai:
 
-1. Find the **A** record with **Name @** and value `5.161.220.19`. Click its pencil icon, change **Value** to `185.199.108.153`, and **Save**.
+1. Find the existing **A** record with **Name @** (it points at your old server). Click its pencil icon, change **Value** to `185.199.108.153`, and **Save**.
 2. Add three more A records. For each one, click **Add New Record**, choose **Type: A**, **Name: @**, **TTL: 1 Hour**, and **Save**. Use these values:
    - `185.199.109.153`
    - `185.199.110.153`
@@ -75,11 +75,8 @@ Then wait. Within about an hour:
 
 ## Part 5. Remove the site from your server (2 minutes)
 
-Only do this after https://ashwire.ai loads from GitHub (Part 4 finished). In your SSH app, paste these one at a time:
+Only do this after https://ashwire.ai loads from GitHub (Part 4 finished). Open your server in your SSH app as you normally do, then paste these one at a time:
 
-```
-ssh root@5.161.220.19
-```
 ```
 rm /etc/caddy/sites/ashwire.caddy
 ```
