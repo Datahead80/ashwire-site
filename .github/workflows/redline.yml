@@ -18,9 +18,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Secret scan (gitleaks)
         env:
@@ -40,5 +41,7 @@ jobs:
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
-          BLOCKED_NAMES: ${{ vars.REDLINE_BLOCKED_NAMES }}
+          # A secret, not a variable: Actions prints a variable's value in
+          # the run log, and a public repo's logs are public.
+          BLOCKED_NAMES: ${{ secrets.REDLINE_BLOCKED_NAMES }}
         run: python3 .github/redline/redline.py
