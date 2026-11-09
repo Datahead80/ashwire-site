@@ -53,6 +53,20 @@ Open the page in a browser at phone and desktop width before committing. Click e
 **Ask first**: new pages, forms, analytics, third-party scripts, any new outside request, any copy that mentions a product that is not shipped.
 **Never**: add a sign-up form or email capture (there is no outside service yet; sign-ups stay "coming soon"); add tracking or ads; commit keys, personal data or anything about the MUD server.
 
+## Ship
+- **Status:** live
+- **Reaches:** the public at https://ashwire.ai.
+- **Version:** the commit. There are no version files.
+- **Changelog:** the Ship log.
+- **Deploy doc:** `DEPLOY.md`, one-time setup only.
+- **Checks:** none after merge. Merging publishes, so the owner's "merge" is the word.
+- **You do:** nothing.
+- **Verify:**
+  - The newest `github-pages` deployment has the `main` commit and state `success`.
+  - These answer 200: `/`, `/cinderbox/`, `/cinderbox/privacy/`, `/cinderbox/trust/`.
+  - Tap list, only when a page's look changed: open it on the phone and check there's no sideways scroll.
+- **Rollback:** a PR that restores `site/` from the commit that was live before. `ship` opens it on the owner's word, and the owner's tap on Merge republishes the old site in about a minute.
+
 ## Done means
 Page checked in a browser at both widths, links work, copy rules above hold, `site/` and the project copy match.
 
