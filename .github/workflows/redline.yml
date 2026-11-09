@@ -1,0 +1,47 @@
+# Redline checks from the coding rulebook's Never list. Runs on every PR,
+# about 20 seconds. Fails on leaked secrets, unsafe workflow files and blocked
+# names; warns on AI trailers.
+name: redline
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: redline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  redline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Secret scan (gitleaks)
+        env:
+          GITLEAKS_VERSION: 8.30.1
+          GITLEAKS_SHA256: 551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          tarball="gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz"
+          curl -sSfL -o "$tarball" "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/${tarball}"
+          echo "${GITLEAKS_SHA256}  ${tarball}" | sha256sum -c -
+          tar -xzf "$tarball" gitleaks
+          ./gitleaks git --no-banner --redact --log-opts="${BASE_SHA}..${HEAD_SHA}" .
+
+      - name: Rulebook checks
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          # A secret, not a variable: Actions prints a variable's value in
+          # the run log, and a public repo's logs are public.
+          BLOCKED_NAMES: ${{ secrets.REDLINE_BLOCKED_NAMES }}
+        run: python3 .github/redline/redline.py
